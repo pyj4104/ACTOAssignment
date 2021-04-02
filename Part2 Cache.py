@@ -45,6 +45,12 @@ class Cache:
             Sets an item to the cache.
         """
         self.cache.set(key, val, self.expTime)
+
+    def remove(self, key):
+        """
+            Deletes an item from the cache.
+        """
+        self.cache.delete(key)
     
     def getFuncItem(self, func, args: [], kwargs: dict) -> (bool, T):
         """
@@ -67,6 +73,13 @@ class Cache:
         """
         key = self.__funcToKey__(func, args, kwargs)
         val = self.cache.set(key, func(*args, **kwargs), self.expTime)
+    
+    def removeFuncItem(self, func, args, kwargs):
+        """
+            Removes function and argument key from the cache.
+        """
+        key = self.__funcToKey__(func, args, kwargs)
+        self.remove(key)
 
     def cached(self):
         def decorator(function):
