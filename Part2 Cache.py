@@ -109,14 +109,27 @@ def fibonacciUC(n):
         return n
     return fibonacciUC(n-1) + fibonacciUC(n-2)
 
+class Test:
+    item = "hi"
+
 # Run Test
 if __name__ == "__main__":
     import timeit
 
-    val = 41
+    val = 30
     start = timeit.default_timer()
     print(fibonacciUC(val))
     print("Time: {}".format(timeit.default_timer()-start))
     start = timeit.default_timer()
     print(fibonacci(val))
     print("Time: {}".format(timeit.default_timer()-start))
+
+    testClass = Test()
+    testClass.item = "bye"
+    print(testClass.item)
+    cache.set('simpleClass', testClass)
+    h = cache.get('simpleClass')
+    print(h.item)
+    cache.remove('simpleClass')
+    h = cache.get('simpleClass')
+    print(h)
