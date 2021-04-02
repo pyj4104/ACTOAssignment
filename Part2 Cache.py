@@ -2,6 +2,7 @@
     Assumption:
         1. Used for functions. Users can remove individual functions and their arguments combined,
             but they will not be able to remove all the values of functions itself.
+        2. Redis needs to be installed with port number of 6379.
 """
 from functools import wraps
 from typing import TypeVar
